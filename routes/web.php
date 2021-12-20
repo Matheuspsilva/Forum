@@ -14,5 +14,11 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', function () {
-    return view('welcome');
+    return redirect()->route('threads.index');
 });
+
+Route::resource('threads', 'ThreadController');
+
+Route::post('replies', 'ReplyController@store')->name('replies.store');
+
+Auth::routes();
